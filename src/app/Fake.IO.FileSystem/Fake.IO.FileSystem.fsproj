@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+    <DefineConstants>$(DefineConstants);DOTNETCORE</DefineConstants>
+    <AssemblyName>Fake.IO.FileSystem</AssemblyName>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Globbing.fs" />
+    <Compile Include="GlobbingFileSystem.fs" />
+    <Compile Include="Path.fs" />
+    <Compile Include="FileInfo.fs" />
+    <Compile Include="FileSystemOperators.fs" />
+    <Compile Include="DirectoryInfo.fs" />
+    <Compile Include="File.fs" />
+    <Compile Include="Directory.fs" />
+    <Compile Include="FileSystemInfo.fs" />
+    <Compile Include="Templates.fs" />
+    <Compile Include="Shell.fs" />
+    <Compile Include="ChangeWatcher.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fake.Core.String\Fake.Core.String.fsproj" />
+  </ItemGroup>
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);NETSTANDARD1_5</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+  </PropertyGroup>
+  <Import Project="..\..\..\.paket\Paket.Restore.targets" />
+</Project>

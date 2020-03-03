@@ -19,7 +19,7 @@ BuildMetrics/
 [Bb]in
 [Rr]elease*/
 _ReSharper*/
-[Tt]est[Rr]esult*
+*[Tt]est[Rr]esult*
 *.suo
 */*.suo
 *.user
@@ -35,29 +35,31 @@ Samples/ContinuousDeploymentWebsite/src/app/Fake_WebSite/Properties/AssemblyInfo
 *.ncrunchsolution
 Samples/ContinuousDeploymentWebsite/deployments
 tools/FAKE/
-src/deploy.web/Fake.Deploy.Web/App_Data/*
-src/deploy.web/Fake.Deploy.Web/Logs/*
 packages/
 *.orig
 deploy/
 Samples/ContinuousDeploymentWebsite/tools/
-src/deploy.web/Fake.Deploy.Web/Logs/Fake.Deploy.Web.log
 gh-pages/
 tools/FSharp.Formatting
 tools/Microsoft.AspNet.Razor
 tools/RazorEngine
-!src/app/FakeLib/NuGet
 !tools/FAKE/tools/FakeLib.dll
 !tools/FAKE/tools/FakeLib.pdb
 .gitignore
+!integrationtests/.gitignore
 _NCrunch_FAKE/
 tools/FSharp.Compiler.Service
 tools/FSharp.Formatting.CommandTool/
 tools/SourceLink.Fake
+.ionide/
+/.vscode/settings.json
+/temp
 
 release.cmd
+release.sh
+*.pfx
 Samples/typescript/out/
-help/RELEASE_NOTES.md
+help/markdown/RELEASE_NOTES.md
 paket.exe
 paket-files/
 
@@ -66,5 +68,20 @@ paket-files/
 */.vagrant/*
 # Ignore VS2015 folder
 .vs/
+# Ignore JetBrains Rider folder
+.idea/
 
+mytemp
+Samples/WebNpmGrunt/node_modules
 .fake
+project.lock.json
+
+#src/app/*/any
+
+/fake-dotnetcore
+/fake-dotnetcore*.zip
+/testbuild.fsx
+/testbuild.fsx.lock
+/src/legacy/deploy.web/Fake.Deploy.Web/App_Data/Providers/**/*.dll
+/src/legacy/deploy.web/Fake.Deploy.Web/App_Data/Providers/**/*.pdb
+/src/legacy/deploy.web/Fake.Deploy.Web/App_Data/Providers/**/*.xml

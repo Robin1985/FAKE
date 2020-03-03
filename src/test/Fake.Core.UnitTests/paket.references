@@ -1,0 +1,11 @@
+group netcorerunner
+
+YoloDev.Expecto.TestSdk
+Microsoft.TestPlatform.TestHost
+Paket.Core
+FSharp.Core
+NETStandard.Library
+Expecto
+Expecto.TestResults
+Expecto.FsCheck
+FsCheck

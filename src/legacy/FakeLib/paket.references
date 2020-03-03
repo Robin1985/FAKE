@@ -1,0 +1,17 @@
+FSharp.Core
+Paket.Core
+FSharp.Compiler.Tools
+Mono.Web.Xdt
+FParsec
+Mono.Cecil
+Octokit
+Nuget.Core
+NuGet.Protocol
+Newtonsoft.Json
+System.Net.Http
+HashLib
+FSharp.Control.Reactive
+System.Reactive.Compatibility
+FSharp.Compiler.Service
+  exclude FSharp.Compiler.Service.MSBuild.*.dll
+  exclude FSharp.Compiler.Service.MSBuild.v12.dll

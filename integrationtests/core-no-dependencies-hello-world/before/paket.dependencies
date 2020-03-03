@@ -1,0 +1,9 @@
+// [ FAKE GROUP ]
+group netcore
+storage: none
+source https://api.nuget.org/v3/index.json
+//source https://ci.appveyor.com/nuget/paket
+source https://ci.appveyor.com/nuget/fake
+
+nuget Fake.Runtime prerelease
+nuget FSharp.Core prerelease

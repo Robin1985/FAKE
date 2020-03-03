@@ -1,0 +1,4 @@
+group netcore
+
+FSharp.Core
+Newtonsoft.Json

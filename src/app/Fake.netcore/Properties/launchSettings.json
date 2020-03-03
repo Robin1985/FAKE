@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Fake.netcore": {
+      "commandName": "Project",
+      "commandLineArgs": "-vv build",
+      "workingDirectory": "C:\\proj\\FAKE"
+    }
+  }
+}

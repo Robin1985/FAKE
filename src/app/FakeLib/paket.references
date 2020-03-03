@@ -1,7 +1,0 @@
-File: YaafFSharpScripting.fs
-FSharp.Core
-Mono.Web.Xdt
-Mono.Cecil
-Nuget.Core
-Newtonsoft.Json
-HashLib

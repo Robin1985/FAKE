@@ -1,0 +1,7 @@
+group netcorerunner
+FSharp.Core
+
+Paket.Core
+Mono.Cecil
+Microsoft.NETCore.App
+NETStandard.Library

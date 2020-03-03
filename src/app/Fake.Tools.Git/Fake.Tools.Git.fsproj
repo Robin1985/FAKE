@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+    <DefineConstants>$(DefineConstants);NO_DOTNETCORE_BOOTSTRAP</DefineConstants>
+    <AssemblyName>Fake.Tools.Git</AssemblyName>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DefineConstants>$(DefineConstants);NETSTANDARD;USE_HTTPCLIENT</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="CommandHelper.fs" />
+    <Compile Include="Sha1.fs" />
+    <Compile Include="Repository.fs" />
+    <Compile Include="Submodule.fs" />
+    <Compile Include="Branches.fs" />
+    <Compile Include="Reset.fs" />
+    <Compile Include="Merge.fs" />
+    <Compile Include="Stash.fs" />
+    <Compile Include="SanityChecks.fs" />
+    <Compile Include="Information.fs" />
+    <Compile Include="FileStatus.fs" />
+    <Compile Include="Rebase.fs" />
+    <Compile Include="CommitMessage.fs" />
+    <Compile Include="Staging.fs" />
+    <Compile Include="Commit.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fake.Core.Environment\Fake.Core.Environment.fsproj" />
+    <ProjectReference Include="..\Fake.Core.SemVer\Fake.Core.SemVer.fsproj" />
+    <ProjectReference Include="..\Fake.Core.Trace\Fake.Core.Trace.fsproj" />
+    <ProjectReference Include="..\Fake.Core.Process\Fake.Core.Process.fsproj" />
+    <ProjectReference Include="..\Fake.Core.String\Fake.Core.String.fsproj" />
+    <ProjectReference Include="..\Fake.IO.FileSystem\Fake.IO.FileSystem.fsproj" />
+  </ItemGroup>
+  <Import Project="..\..\..\.paket\Paket.Restore.targets" />
+</Project>

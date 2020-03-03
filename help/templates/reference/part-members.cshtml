@@ -1,5 +1,5 @@
 @if (Enumerable.Count(Model.Members) > 0) {
-  <h3>@Model.Header</h3>
+  <h2><a name="@Model.Header" class="anchor" href="#@Model.Header">@Model.Header</a></h2>
   <table class="table table-bordered member-list">
     <thead>
       <tr><td>@Model.TableHeader</td><td>Description</td></tr>
@@ -21,14 +21,28 @@
             @if (!it.Details.TypeArguments.IsEmpty) {
               <strong>Type parameters:</strong> @it.Details.FormatTypeArguments
             }
+            @if (Enumerable.Any(it.Attributes)) {
+                <span>
+                    <strong>Attributes:</strong><br />
+                    @foreach (var attr in it.Attributes)
+                    {
+                        @Html.Encode(@attr.Format())<br />
+                    }
+                </span>
+            }
           </div>
         </td>
         <td class="xmldoc">
+        @if (it.IsObsolete) {
+            <div class="notification is-warning">
+                <h5>OBSOLETE</h5>
+                <p>@Html.Encode(@it.ObsoleteMessage)</p>
+            </div> 
+        }
           @if (!String.IsNullOrEmpty(it.Details.FormatSourceLocation))
           {
             <a href="@it.Details.FormatSourceLocation" class="github-link">
-              <img src="../content/img/github.png" class="normal" />
-              <img src="../content/img/github-blue.png" class="hover" />
+              <i class="fab fa-github fa-fw"></i>
             </a>
           }
           @it.Comment.FullText

@@ -1,7 +1,9 @@
 @using FSharp.MetadataFormat
 @{
-  Layout = "template";
+  Layout = "apidocstemplate";
   Title = Model.Module.Name + " - " + Properties["project-name"];
+  ViewBag.UrlName = Model.Module.UrlName;
+  ViewBag.AssemblyName = Model.Module.Assembly.Name;
 }
 
 @{
@@ -31,7 +33,18 @@
   var nestTypes = (IEnumerable<FSharp.MetadataFormat.Type>)Model.Module.NestedTypes;
 }
 
-<h1>@Model.Module.Name</h1>
+@if (Model.Module.IsObsolete)
+{
+  <p>
+    <div class="alert alert-warning">
+    <h5>OBSOLETE</h5>
+    <p>@Html.Encode(@Model.Module.ObsoleteMessage)</p>
+    </div> 
+  </p>
+}
+
+<h1><a name="@Model.Module.Name" class="anchor" href="#@Model.Module.Name">@Model.Module.Name</a></h1>
+
 <div class="xmldoc">
   @foreach (var sec in comment.Sections) {
     // XML comment for the type has multiple sections that can be labelled
@@ -40,7 +53,7 @@
     if (!byCategory.Any(g => g.GroupKey == sec.Key))
     {
       if (sec.Key != "<default>")        {
-        <h2>@sec.Key</h2>
+        <h2><a name="@sec.Key" class="anchor" href="#@sec.Key">@sec.Key</a></h2>
       }
       @sec.Value  
     }
@@ -61,7 +74,7 @@
 <!-- Render nested types and modules, if there are any -->
 @if (nestTypes.Count() + nestModules.Count() > 0)
 {
-  <h2>Nested types and modules</h2>
+  <h2><a name="Nested types and modules" class="anchor" href="#Nested types and modules">Nested types and modules</a></h2>
   <div>
     @RenderPart("part-nested", new {
       Types = nestTypes,

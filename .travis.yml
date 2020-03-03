@@ -1,9 +1,36 @@
 language: csharp
+sudo: required
+dist: xenial # Ubuntu 16.04
 
-sudo: false  # use the new container-based Travis infrastructure
+dotnet: 3.1.100
 
-script: 
-  - ./build.sh Default
+addons:
+  apt:
+    packages:
+      - build-essential
+      - ruby
+      - ruby-dev
+      - rubygems-integration
+
+before_install:
+  - gem install --no-ri --no-rdoc fpm 
+  
+  #- wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+  #- sudo dpkg -i packages-microsoft-prod.deb
+  #- sudo apt-get install apt-transport-https -y
+  #- sudo apt-get update -y
+  #- sudo apt-get install dotnet-sdk-2.1=2.1.508* -y
+
+env:
+ - FAKE_DETAILED_ERRORS=true HOME=/home/travis APPDATA=/home/travis LocalAppData=/home/travis
+
+
+mono:
+  - 5.18.1
+
+script:
+  - dotnet tool restore
+  - dotnet fake build --parallel 3
 
 branches:
   except:
